@@ -18,6 +18,7 @@ public:
 		block = new int[num];
 		for (int i = 0; i < num; i += 1) block[i] = FROM;
 	}
+	
 	~Tower() {
 		delete[] block;
 	}
@@ -31,6 +32,7 @@ public:
 		}
 		return min;
 	}
+	
 	bool move(int origin, int destination) {
 		int min = getMin(origin);
 		if (min == INT_MAX || getMin(destination) <= min) {
@@ -70,12 +72,14 @@ public:
 		tower = new Tower(input);
 		attempt = 0;
 	}
+	
 	void gotoxy(int x, int y) {
 		COORD CursorPosition;
 		CursorPosition.X = x;
 		CursorPosition.Y = y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), CursorPosition);
 	}
+	
 	void display() {
 		system("cls");
 		int temp = tower->num;
@@ -93,6 +97,7 @@ public:
 		}
 		gotoxy(0, tower->num + 5);
 	}
+	
 	void moveBlock() {
 		cout << attempt + 1 << "번째 시도, ";
 		while (true) {
@@ -109,17 +114,20 @@ public:
 		}
 		attempt += 1;
 	}
+	
 	bool isFinish() const {
 		for (int i = 0; i < tower->num; i += 1) {
 			if (tower->block[i] < TO) return false;
 		}
 		return true;
 	}
+	
 	void celebration() {
 		if (attempt == pow(2, tower->num) - 1) cout << "완벽하게 해내셨군요! 축하드립니다." << endl;
 		else cout << "어째저째 해내셨군요. 축하드립니다." << endl;
 		delete tower;
 	}
+	
 	int isOneMore() {
 		cout << "종료하시려면 0, 계속하시려면 1을 입력하세요 ☞ ";
 		cin >> input;
@@ -129,5 +137,4 @@ public:
 
 int main() {
 	UI();
-	return 0;
 }
