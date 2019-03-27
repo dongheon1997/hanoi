@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <math.h>
+
 using namespace std;
 
 enum { FROM, TEMP, TO };//locations
@@ -63,7 +64,7 @@ public:
 
 	void initialization() {
 		do {
-			cout << "µµÀüÇÒ ºí·° °³¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. (1 ~ 10) ¢Ñ ";
+			cout << "ë„ì „í•  ë¸”ëŸ­ ê°œìˆ˜ë¥¼ ìž…ë ¥í•˜ì„¸ìš”. (1 ~ 10) â˜ž ";
 			cin >> input;
 		} while (input < 1 || input > 10);
 		tower = new Tower(input);
@@ -78,11 +79,11 @@ public:
 	void display() {
 		system("cls");
 		int temp = tower->num;
-		cout << "¦«¦¡¦¡¦¡¦«¦¡¦¡¦¡¦«¦¡¦¡¦¡¦«" << endl;
-		for (int i = 0; i < temp; i += 1) cout << "¦¢   ¦¢   ¦¢   ¦¢" << endl;
-		cout << "¦«¦¡¦¡¦¡¦«¦¡¦¡¦¡¦«¦¡¦¡¦¡¦«" << endl;
-		cout << "¦¢ 1 ¦¢ 2 ¦¢ 3 ¦¢" << endl;
-		cout << "¦«¦¡¦¡¦¡¦«¦¡¦¡¦¡¦«¦¡¦¡¦¡¦«" << endl;
+		cout << "â”¼â”€â”€â”€â”¼â”€â”€â”€â”¼â”€â”€â”€â”¼" << endl;
+		for (int i = 0; i < temp; i += 1) cout << "â”‚   â”‚   â”‚   â”‚" << endl;
+		cout << "â”¼â”€â”€â”€â”¼â”€â”€â”€â”¼â”€â”€â”€â”¼" << endl;
+		cout << "â”‚ 1 â”‚ 2 â”‚ 3 â”‚" << endl;
+		cout << "â”¼â”€â”€â”€â”¼â”€â”€â”€â”¼â”€â”€â”€â”¼" << endl;
 		int layer[3] = { temp, temp, temp };
 		temp = tower->num - 1;
 		for (int i = temp; i >= 0; i -= 1) {
@@ -93,18 +94,18 @@ public:
 		gotoxy(0, tower->num + 5);
 	}
 	void moveBlock() {
-		cout << attempt + 1 << "¹øÂ° ½Ãµµ, ";
+		cout << attempt + 1 << "ë²ˆì§¸ ì‹œë„, ";
 		while (true) {
 			do {
-				cout << "¾î´À °÷À» ¿Å±â°Ú½À´Ï±î? (1 ~ 3) ¢Ñ ";
+				cout << "ì–´ëŠ ê³³ì„ ì˜®ê¸°ê² ìŠµë‹ˆê¹Œ? (1 ~ 3) â˜ž ";
 				cin >> input;
 			} while (input < 1 || input > 3 || tower->getMin(input - 1) == INT_MAX);
 			do {
-				cout << "¾î´À °÷À¸·Î ¿Å±â°Ú½À´Ï±î? (1 ~ 3) ¢Ñ ";
+				cout << "ì–´ëŠ ê³³ìœ¼ë¡œ ì˜®ê¸°ê² ìŠµë‹ˆê¹Œ? (1 ~ 3) â˜ž ";
 				cin >> input2;
 			} while (input2 < 1 || input2 > 3);
 			if (tower->move(input - 1, input2 - 1)) break;
-			else cout << "±×·¸°Õ ¸øÇÕ´Ï´Ù. ";
+			else cout << "ê·¸ë ‡ê² ëª»í•©ë‹ˆë‹¤. ";
 		}
 		attempt += 1;
 	}
@@ -115,12 +116,12 @@ public:
 		return true;
 	}
 	void celebration() {
-		if (attempt == pow(2, tower->num) - 1) cout << "¿Ïº®ÇÏ°Ô ÇØ³»¼Ì±º¿ä! ÃàÇÏµå¸³´Ï´Ù." << endl;
-		else cout << "¾îÂ°ÀúÂ° ÇØ³»¼Ì±º¿ä. ÃàÇÏµå¸³´Ï´Ù." << endl;
+		if (attempt == pow(2, tower->num) - 1) cout << "ì™„ë²½í•˜ê²Œ í•´ë‚´ì…¨êµ°ìš”! ì¶•í•˜ë“œë¦½ë‹ˆë‹¤." << endl;
+		else cout << "ì–´ì§¸ì €ì§¸ í•´ë‚´ì…¨êµ°ìš”. ì¶•í•˜ë“œë¦½ë‹ˆë‹¤." << endl;
 		delete tower;
 	}
 	int isOneMore() {
-		cout << "Á¾·áÇÏ½Ã·Á¸é 0, °è¼ÓÇÏ½Ã·Á¸é 1À» ÀÔ·ÂÇÏ¼¼¿ä ¢Ñ ";
+		cout << "ì¢…ë£Œí•˜ì‹œë ¤ë©´ 0, ê³„ì†í•˜ì‹œë ¤ë©´ 1ì„ ìž…ë ¥í•˜ì„¸ìš” â˜ž ";
 		cin >> input;
 		return input;
 	}
