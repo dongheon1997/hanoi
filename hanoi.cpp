@@ -61,7 +61,7 @@ public:
 				display();
 			} while (!isFinish());
 			celebration();
-		} while (isOneMore());
+		} while (oneMore());
 	}
 
 	void initialization() {
@@ -89,8 +89,7 @@ public:
 		cout << "│ 1 │ 2 │ 3 │" << endl;
 		cout << "┼───┼───┼───┼" << endl;
 		int layer[3] = { temp, temp, temp };
-		temp = tower->num - 1;
-		for (int i = temp; i >= 0; i -= 1) {
+		for (int i = temp - 1; i >= 0; i -= 1) {
 			temp = tower->block[i];
 			gotoxy(temp * 4 + 2, layer[temp]--);
 			cout << i;
@@ -128,7 +127,7 @@ public:
 		delete tower;
 	}
 	
-	int isOneMore() {
+	int oneMore() {
 		cout << "종료하시려면 0, 계속하시려면 1을 입력하세요 ☞ ";
 		cin >> input;
 		return input;
@@ -137,4 +136,5 @@ public:
 
 int main() {
 	UI();
+	return 0;
 }
